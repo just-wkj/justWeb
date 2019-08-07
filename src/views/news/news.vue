@@ -405,7 +405,7 @@ import quillTable from 'quill-table';
                     header: (xhr, formData) => {
                         // xhr.setRequestHeader('myHeader','myValue');
                         // formData.append('token', '1234')
-                        xhr.setRequestHeader('ApiAuth', sessionStorage.getItem('apiAuth'));
+                        xhr.setRequestHeader('justTokn', sessionStorage.getItem('justTokn'));
                     },
                     // start: function (){}
                     start: () => {
@@ -466,7 +466,7 @@ import quillTable from 'quill-table';
                     }
                 });
                 this.uploadUrl = config.baseUrl + 'Index/upload';
-                this.uploadHeader = {'ApiAuth': sessionStorage.getItem('apiAuth')};
+                this.uploadHeader = {'justTokn': sessionStorage.getItem('justTokn')};
             },
             alertAdd () {
                 this.modalSetting.show = true;

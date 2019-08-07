@@ -16,7 +16,7 @@ const RouterConfig = {
 export const router = new VueRouter(RouterConfig);
 
 router.beforeEach((to, from, next) => {
-    let apiAuth = sessionStorage.getItem('apiAuth');
+    let justTokn = sessionStorage.getItem('justTokn');
     iView.LoadingBar.start();
     Util.title(to.meta.title);
     if (sessionStorage.getItem('locking') === '1' && to.name !== 'locking') { // 判断当前是否是锁定状态
@@ -27,11 +27,11 @@ router.beforeEach((to, from, next) => {
     } else if (sessionStorage.getItem('locking') === '0' && to.name === 'locking') {
         next(false);
     } else {
-        if (!apiAuth && to.name !== 'login') { // 判断是否已经登录且前往的页面不是登录页
+        if (!justTokn && to.name !== 'login') { // 判断是否已经登录且前往的页面不是登录页
             next({
                 name: 'login'
             });
-        } else if (apiAuth && to.name === 'login') { // 判断是否已经登录且前往的是登录页
+        } else if (justTokn && to.name === 'login') { // 判断是否已经登录且前往的是登录页
             Util.title();
             next({
                 name: 'home_index'
@@ -40,7 +40,7 @@ router.beforeEach((to, from, next) => {
             // 统一处理请求的UserToken
             axios.defaults.baseURL = config.baseUrl;
             axios.interceptors.request.use(function (config) {
-                config.headers['ApiAuth'] = sessionStorage.getItem('apiAuth');
+                config.headers['justToken'] = sessionStorage.getItem('justToken');
                 return config;
             });
             Util.toDefaultPage([...routers], to.name, router, next);

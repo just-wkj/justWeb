@@ -243,7 +243,7 @@ Select<style lang="less" scoped>
             init () {
                 let vm = this;
                 this.uploadUrl = config.baseUrl + 'Index/upload';
-                this.uploadHeader = {'ApiAuth': sessionStorage.getItem('apiAuth')};
+                this.uploadHeader = {'justTokn': sessionStorage.getItem('justTokn')};
                 this.columnsList.forEach(item => {
                     if (item.handle) {
                         item.render = (h, param) => {

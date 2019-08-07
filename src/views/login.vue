@@ -8,7 +8,7 @@
             <Card :bordered="false">
                 <p slot="title">
                     <Icon type="log-in"></Icon>
-                    欢迎登录法宝网后台管理系统
+                    欢迎登录JustAdmin后台管理系统
                 </p>
                 <div class="form-con">
                     <Form ref="loginForm" :model="form" :rules="rules">
@@ -65,7 +65,9 @@
                             username: this.form.username,
                             password: this.form.password
                         }).then(function (response) {
-                            if (response.data.code === 1) {
+                            if (response.data.errCode === 0) {
+                                console.log('response.data.data')
+                                console.log(response.data.data)
                                 vm.$store.commit('login', response.data.data);
                                 vm.$Message.success(response.data.msg);
                                 vm.$router.push({

@@ -269,7 +269,7 @@
                     }
                 });
                 this.uploadUrl = config.baseUrl + 'Index/upload';
-                this.uploadHeader = {'ApiAuth': sessionStorage.getItem('apiAuth')};
+                this.uploadHeader = {'justTokn': sessionStorage.getItem('justTokn')};
             },
             alertAdd () {
                 this.modalSetting.show = true;
