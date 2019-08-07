@@ -19,7 +19,7 @@ const user = {
             sessionStorage.setItem('access', data.access);
             sessionStorage.setItem('user', data.nickname);
             sessionStorage.setItem('headImg', data.headImg);
-            sessionStorage.setItem('justTokn', data.justTokn);
+            sessionStorage.setItem('justToken', data.justToken);
             sessionStorage.setItem('userInfo', JSON.stringify(data));
         }
     }

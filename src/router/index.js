@@ -16,7 +16,7 @@ const RouterConfig = {
 export const router = new VueRouter(RouterConfig);
 
 router.beforeEach((to, from, next) => {
-    let justTokn = sessionStorage.getItem('justTokn');
+    let justToken = sessionStorage.getItem('justToken');
     iView.LoadingBar.start();
     Util.title(to.meta.title);
     if (sessionStorage.getItem('locking') === '1' && to.name !== 'locking') { // 判断当前是否是锁定状态
@@ -27,11 +27,11 @@ router.beforeEach((to, from, next) => {
     } else if (sessionStorage.getItem('locking') === '0' && to.name === 'locking') {
         next(false);
     } else {
-        if (!justTokn && to.name !== 'login') { // 判断是否已经登录且前往的页面不是登录页
+        if (!justToken && to.name !== 'login') { // 判断是否已经登录且前往的页面不是登录页
             next({
                 name: 'login'
             });
-        } else if (justTokn && to.name === 'login') { // 判断是否已经登录且前往的是登录页
+        } else if (justToken && to.name === 'login') { // 判断是否已经登录且前往的是登录页
             Util.title();
             next({
                 name: 'home_index'

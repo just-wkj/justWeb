@@ -405,7 +405,7 @@ import quillTable from 'quill-table';
                     header: (xhr, formData) => {
                         // xhr.setRequestHeader('myHeader','myValue');
                         // formData.append('token', '1234')
-                        xhr.setRequestHeader('justTokn', sessionStorage.getItem('justTokn'));
+                        xhr.setRequestHeader('justToken', sessionStorage.getItem('justToken'));
                     },
                     // start: function (){}
                     start: () => {
@@ -466,7 +466,7 @@ import quillTable from 'quill-table';
                     }
                 });
                 this.uploadUrl = config.baseUrl + 'Index/upload';
-                this.uploadHeader = {'justTokn': sessionStorage.getItem('justTokn')};
+                this.uploadHeader = {'justToken': sessionStorage.getItem('justToken')};
             },
             alertAdd () {
                 this.modalSetting.show = true;

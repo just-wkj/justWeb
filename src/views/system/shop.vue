@@ -334,7 +334,7 @@
                     }
                 });
                 this.uploadUrl = config.baseUrl + 'Index/upload';
-                this.uploadHeader = {'justTokn': sessionStorage.getItem('justTokn')};
+                this.uploadHeader = {'justToken': sessionStorage.getItem('justToken')};
             },
             alertAdd () {
                 let vm = this;

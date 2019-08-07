@@ -107,7 +107,7 @@ export default {
             let vm = this;
             axios.get('Index/baseIndex').then(function (response) {
                 let res = response.data;
-                if (res.code === 1) {
+                if (res.errCode === 0) {
                     vm.userLogin = res.data.userLogin;
                     vm.userInfo = res.data.userInfo;
                 } else {

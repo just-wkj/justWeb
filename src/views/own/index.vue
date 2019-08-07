@@ -188,7 +188,7 @@
                 this.formItem.nickname = userInfo.nickname;
                 this.formItem.headImg = userInfo.headImg;
                 this.uploadUrl = config.baseUrl + 'Index/upload';
-                this.uploadHeader = {'ApiAuth': sessionStorage.getItem('apiAuth')};
+                this.uploadHeader = {'justToken': sessionStorage.getItem('justToken')};
             },
             handleImgFormatError (file) {
                 this.$Notice.warning({
