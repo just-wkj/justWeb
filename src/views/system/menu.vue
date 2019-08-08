@@ -85,15 +85,11 @@
                         params: {
                             id: currentRow.id
                         }
-                    }).then(function (response) {
+                    }).then(response => {
                         currentRow.loading = false;
-                        if (response.data.code === 1) {
-                            vm.tableData.splice(index, 1);
-                            vm.$Message.success(response.data.msg);
-                        } else {
-                            vm.$Message.error(response.data.msg);
-                        }
-                    });
+                        vm.tableData.splice(index, 1);
+                        vm.$Message.success(response.msg);
+                    }, () => {});
                 }
             }
         }, [
@@ -208,22 +204,11 @@
                                                 status: status,
                                                 id: currentRowData.id
                                             }
-                                        }).then(function (response) {
-                                            let res = response.data;
-                                            if (res.code === 1) {
-                                                vm.$Message.success(res.msg);
-                                            } else {
-                                                if (res.code === -14) {
-                                                    vm.$store.commit('logout', vm);
-                                                    vm.$router.push({
-                                                        name: 'login'
-                                                    });
-                                                } else {
-                                                    vm.$Message.error(res.msg);
-                                                    vm.getList();
-                                                }
-                                            }
-                                            vm.cancel();
+                                        }).then(response => {
+                                            this.$Message.success(response.msg);
+                                            this.cancel();
+                                        }, () => {
+                                            this.getList();
                                         });
                                     }
                                 }

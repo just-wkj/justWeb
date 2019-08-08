@@ -54,7 +54,11 @@ router.beforeEach((to, from, next) => {
                 // if (response.statue !== 200) {
                 //     iView.Message.error('访问异常');
                 // }
+                console.log(response)
+                console.log(response.config.headers)
                 let errCode = response.data.errCode;
+                console.log(errCode)
+                console.log(errCode === 0)
                 if (errCode === 0) { // 成功处理
                     return response.data;
                 } else if (errCode === 4002) { // 登录失效,直接去登录
