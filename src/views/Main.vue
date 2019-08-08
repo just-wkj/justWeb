@@ -136,17 +136,14 @@
                 } else if (name === 'loginout') {
                     // 退出登录
                     let vm = this;
-                    axios.get('Login/logout').then(function (response) {
-                        let res = response.data;
-                        if (res.code === 1) {
-                            vm.$store.commit('logout', vm);
-                            vm.$store.commit('clearOpenedSubmenu');
-                            vm.$router.push({
-                                name: 'login'
-                            });
-                        } else {
-                            vm.$Message.error(res.msg);
-                        }
+                    axios.get('Login/logout').then(() => {
+                        vm.$store.commit('logout', vm);
+                        vm.$store.commit('clearOpenedSubmenu');
+                        vm.$router.push({
+                            name: 'login'
+                        });
+                    }, () => {
+
                     });
                 }
             },

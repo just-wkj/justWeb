@@ -64,18 +64,14 @@
                         axios.post('Login/index', {
                             username: this.form.username,
                             password: this.form.password
-                        }).then(function (response) {
-                            if (response.data.errCode === 0) {
-                                console.log('response.data.data')
-                                console.log(response.data.data)
-                                vm.$store.commit('login', response.data.data);
-                                vm.$Message.success(response.data.msg);
-                                vm.$router.push({
-                                    name: 'home_index'
-                                });
-                            } else {
-                                vm.$Message.error(response.data.msg);
-                            }
+                        }).then(response => {
+                            vm.$store.commit('login', response.data);
+                            vm.$Message.success(response.msg);
+                            vm.$router.push({
+                                name: 'home_index'
+                            });
+                        }, () => {
+                            // vm.$Message.error(response.data.msg);
                         });
                     }
                 });
