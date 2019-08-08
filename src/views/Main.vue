@@ -17,7 +17,7 @@
                 </div>
             </shrinkable-menu>
         </div>
-        <div class="main-header-con" :style="{paddingLeft: shrink?'60px':'200px'}">
+        <div class="main-header-con" :style="{paddingLeft: shrink?'60px':'200px', height:'60px'}">
             <div class="main-header">
                 <div class="navicon-con">
                     <Button :style="{transform: 'rotateZ(' + (this.shrink ? '-90' : '0') + 'deg)'}" type="text" @click="toggleClick">
@@ -30,9 +30,9 @@
                     </div>
                 </div>
                 <div class="header-avator-con">
-                    <full-screen v-model="isFullScreen" @on-change="fullscreenChange"></full-screen>
-                    <lock-screen></lock-screen>
-                    <theme-switch></theme-switch>
+<!--                    <full-screen v-model="isFullScreen" @on-change="fullscreenChange"></full-screen>-->
+<!--                    <lock-screen></lock-screen>-->
+<!--                    <theme-switch></theme-switch>-->
 
                     <div class="user-dropdown-menu-con">
                         <Row type="flex" justify="end" align="middle" class="user-dropdown-innercon">
@@ -51,11 +51,11 @@
                     </div>
                 </div>
             </div>
-            <div class="tags-con">
-                <tags-page-opened :pageTagsList="pageTagsList"></tags-page-opened>
-            </div>
+<!--            <div class="tags-con">-->
+<!--                <tags-page-opened :pageTagsList="pageTagsList"></tags-page-opened>-->
+<!--            </div>-->
         </div>
-        <div class="single-page-con" :style="{left: shrink?'60px':'200px'}">
+        <div class="single-page-con" :style="{left: shrink?'60px':'200px', top:'60px'}">
             <div class="single-page">
                 <keep-alive :include="cachePage">
                     <router-view></router-view>
