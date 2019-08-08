@@ -279,21 +279,9 @@
             getList () {
                 let vm = this;
                 vm.tableLoading = true;
-                axios.get('Menu/index').then(function (response) {
-                    let res = response.data;
-                    vm.tableLoading = false;
-                    if (res.code === 1) {
-                        vm.tableData = res.data.list;
-                    } else {
-                        if (res.code === -14) {
-                            vm.$store.commit('logout', vm);
-                            vm.$router.push({
-                                name: 'login'
-                            });
-                        } else {
-                            vm.$Message.error(res.msg);
-                        }
-                    }
+                axios.get('Menu/index').then(response => {
+                    this.tableData = response.data.data;
+                    this.tableLoading = false;
                 });
             }
         }
