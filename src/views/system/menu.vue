@@ -51,6 +51,8 @@
 
 <script>
     import axios from 'axios';
+    import JustAxios from '../../just/JustAxios';
+    import JustApi from '../../just/JustApi';
     const editButton = (vm, h, currentRow, index) => {
         return h('Button', {
             props: {
@@ -81,15 +83,18 @@
             },
             on: {
                 'on-ok': () => {
-                    axios.get('Menu/del', {
-                        params: {
+                    JustAxios.ajax({
+                        url: JustApi.menuDel,
+                        data: {
                             id: currentRow.id
                         }
                     }).then(response => {
                         currentRow.loading = false;
-                        vm.tableData.splice(index, 1);
-                        vm.$Message.success(response.msg);
-                    }, () => {});
+                        this.tableData.splice(index, 1);
+                        this.$Message.success(response.msg);
+                    }, fail => {
+
+                    });
                 }
             }
         }, [

@@ -55,7 +55,7 @@ router.beforeEach((to, from, next) => {
                 //     iView.Message.error('访问异常');
                 // }
                 console.log(response)
-                console.log(response.config.headers)
+                // console.log(response.config.headers)
                 let errCode = response.data.errCode;
                 console.log(errCode)
                 console.log(errCode === 0)
