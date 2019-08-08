@@ -90,8 +90,8 @@
                         }
                     }).then(response => {
                         currentRow.loading = false;
-                        this.tableData.splice(index, 1);
-                        this.$Message.success(response.msg);
+                        vm.tableData.splice(index, 1);
+                        vm.$Message.success(response.msg);
                     }, fail => {
 
                     });
