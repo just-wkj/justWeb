@@ -233,24 +233,19 @@
                 this.modalSetting.show = true;
             },
             submit () {
-                let self = this;
                 this.$refs['myForm'].validate((valid) => {
                     if (valid) {
-                        self.modalSetting.loading = true;
-                        let target = '';
-                        if (this.formItem.id === 0) {
-                            target = 'Menu/add';
-                        } else {
-                            target = 'Menu/edit';
-                        }
-                        axios.post(target, this.formItem).then(function (response) {
-                            if (response.data.code === 1) {
-                                self.$Message.success(response.data.msg);
-                            } else {
-                                self.$Message.error(response.data.msg);
-                            }
-                            self.getList();
-                            self.cancel();
+                        this.modalSetting.loading = true;
+                        let url = this.formItem.id === 0 ? JustApi.menuAdd : JustApi.menuEdit;
+                        JustAxios.ajax({
+                            url,
+                            data: this.formItem
+                        }).then(res => {
+                            this.$Message.success(res.msg);
+                            this.getList();
+                            this.cancel();
+                        }, err => {
+
                         });
                     }
                 });

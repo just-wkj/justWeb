@@ -17,6 +17,14 @@ export default {
     menuDel: {
         method: 'get',
         url: 'Menu/del'
+    },
+    menuAdd: {
+        method: 'post',
+        url: 'Menu/add'
+    },
+    menuEdit: {
+        method: 'post',
+        url: 'Menu/edit'
     }
 
 };
